@@ -1,27 +1,14 @@
 {
-  "name": "whats_for_launch",
+  "name": "WhatsForLaunch",
   "version": "1.0.0",
   "description": "View and favorite SpaceX missions",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "WhatsForLaunch"
-  },
-  "keywords": [
-    "spaceX",
-    "rocket_insights",
-    "coding_homework",
-    "interviewing_Kate"
-  ],
   "author": "TK Mogel",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "jest": "^24.9.0",
-    "mocha": "^6.2.0",
     "react": "^16.9.0"
   }
 }
