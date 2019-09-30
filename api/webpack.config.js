@@ -8,7 +8,7 @@ const config = {
      },
      target: 'node',
      resolve: {
-        extensions: ['.js']
+        extensions: ['.js', '.json']
     },
     module: {
         rules: [

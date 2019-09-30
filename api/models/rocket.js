@@ -1,23 +1,11 @@
-const rocketMap = {
-   rocket_id: {
-      _source: "rocket_id"
-   },
-   rocket_name: {
-      _source: "rocket_name"
-   },
-   description: {
-     _source: "description"
-   },
-   country: {
-     _source: "country"
-   },
-   company: {
-      _source: "company"
-   },
-   cost_per_launch: {
-      _source: "cost_per_launch"
-   },
-   flickr_images: {
-      _source: "flickr_images"
+export const rocketMap = {
+    item: {
+        rocket_id: "rocket_id",
+        rocket_name: "rocket_name",
+        description: "description",
+        country: "country",
+        company: "company",
+        cost_per_launch:"cost_per_launch",
+        images: "flickr_images",
    }
 };
