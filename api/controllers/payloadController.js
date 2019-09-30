@@ -1,13 +1,17 @@
-import payloadBuilder from '../utils/payloadBuilder';
+import { getMissionPayload } from '../service/missionService';
 
 export const payloadController = async (req, res) => {
-    let rockets = '';
+    let missions = '';
+    const offset = req.params.offset;
+    const limit = req.params.limit;
+    const count = req.params.count;
     try {
-        rockets = await payloadBuilder();
+        missions = await getMissionPayload(offset, limit);
     } catch(e) {
         console.log(e);  
     }
-    res.send(rockets);
+    const data = count ? missions.length : missions;
+    res.send(data);
 };
 
 export default payloadController;

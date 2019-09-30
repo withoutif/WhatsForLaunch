@@ -11,9 +11,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "map-json": "^0.1.7",
+    "lodash.foreach": "^4.5.0",
+    "node-json-transform": "^1.0.19",
+    "qs": "^6.9.0",
     "react": "^16.9.0",
-    "reflect-metadata": "^0.1.13",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },

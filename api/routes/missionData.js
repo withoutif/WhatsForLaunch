@@ -3,6 +3,6 @@ import { payloadController } from '../controllers/payloadController';
 
 const router = express.Router();
 
-router.get('/', payloadController);
+router.get('/:offset?/:limit?', payloadController);
 
 export default router;
