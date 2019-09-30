@@ -2,10 +2,9 @@ import express from 'express';
 import missionData from './routes/missionData';
 import launchCount from './routes/launchCount';
 
-const env = process.env.NODE_ENV || 'dev';
-
 const app = express();
 const port = 3001;
+const host = '0.0.0.0';
 
 app.set('port',port);
 app.get('/', (req, res) => {
@@ -14,5 +13,4 @@ app.get('/', (req, res) => {
 app.use('/count', launchCount);
 app.use('/missions', missionData);
 
-app.listen(port);
-
+app.listen(port, host);

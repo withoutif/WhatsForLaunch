@@ -2,9 +2,9 @@
  var webpack = require('webpack');
  
 const config = {
-     entry: './app.js',
+     entry: './server.js',
      output: {
-         filename: './app.bundle.js'
+         filename: './server.bundle.js'
      },
      target: 'node',
      resolve: {

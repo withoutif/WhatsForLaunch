@@ -10,7 +10,8 @@ const nestedMap = {
         type: "payload_type",
         customers: "customers"
     }
-}
+};
+
 export const launchMap = {
     item: {
         flight_number: "flight_number",

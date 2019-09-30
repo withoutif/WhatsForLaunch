@@ -7,6 +7,6 @@ export const countController = async (req, res) => {
     } catch(e) {
         console.log(e);  
     }
-    res.send(count);
+    res.json(count);
 };
 export default countController;
