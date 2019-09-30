@@ -16,4 +16,9 @@ export const getMissionPayload = async (offset, limit) => {
        const mappedRockets = DataTransform(rockets, rocketMap).transform();
        return mergeObjectByKey(launch, mappedRockets, launchKey, rocketKey);
    })); 
-}
+};
+
+export const getLaunchCount = async () => {
+    const launches = await getLaunches();
+    return launches.length;
+};
