@@ -17,3 +17,8 @@ export const getLaunches = async (offset = '', limit = '') => {
     const uri = `${config.spaceXdata.uris.launch}?${params}`;
     return getRequest(uri);
 };
+
+export const getLaunchByFlightNumber = async (flightNumber) => {
+    const uri = `${config.spaceXdata.uris.launch}/${flightNumber}`;
+    return getRequest(uri);
+};

@@ -1,0 +1,47 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Display SpaceX Launch data",
+  "main": "App.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash.transform": "^4.6.0",
+    "path": "^0.12.7",
+    "prop-types": "^15.7.2",
+    "qs": "^6.9.0",
+    "react": "^16.10.1",
+    "react-collapsible": "^2.6.0",
+    "react-dom": "^16.10.1",
+    "react-paginate": "^6.3.0",
+    "react-table": "^6.10.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.6.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  },
+  "scripts": {
+    "start": "cd dist && node ../dist/server.js",
+    "build": "webpack",
+    "dev:start": "npm run build && npm run start",
+    "client": "node ../dist/assets/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withoutif/WhatsForLaunch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/withoutif/WhatsForLaunch/issues"
+  },
+  "homepage": "https://github.com/withoutif/WhatsForLaunch#readme"
+}

@@ -1,15 +1,26 @@
-import { getMissionPayload } from '../service/missionService';
+import { getMissionPayload, getSingleLaunch } from '../service/missionService';
 
 export const payloadController = async (req, res) => {
-    let missions = '';
     const offset = req.params.offset;
     const limit = req.params.limit;
     try {
-        missions = await getMissionPayload(offset, limit);
+        const missions = await getMissionPayload(offset, limit);
+        res.send(missions);
     } catch(e) {
-        console.log(e);  
+        Console.log(e);
+        throw new Error(e);
     }
-    res.send(missions);
+
 };
 
-export default payloadController;
+export const singleFlightController = async (req, res) => {
+    const flightNumber = req.params.flightNumber;
+    try {
+        const launch = await getSingleLaunch(flightNumber);
+        res.send(launch);
+    } catch(e) {
+        Console.log(e);
+        throw new Error(e);
+    }
+
+};

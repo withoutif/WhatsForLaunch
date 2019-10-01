@@ -4,13 +4,12 @@
   "description": "RESTful API to return formatted SpaceX data",
   "main": "app.js",
   "scripts": {
-    "webpack": "webpack",
-    "start": "npm run webpack && node ./dist/server.bundle.js"
+    "build": "webpack",
+    "start": "npm run build && node ./dist/server.bundle.js"
   },
   "author": "TK Mogel",
   "dependencies": {
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
     "node-json-transform": "^1.0.19",
     "qs": "^6.9.0",
     "react": "^16.9.0",

@@ -1,6 +1,6 @@
 import { DataTransform } from 'node-json-transform';
 import { launchMap, rocketMap } from '../models';
-import { getLaunches, getRockets } from './spaceXService';
+import { getLaunches, getRockets, getLaunchByFlightNumber } from './spaceXService';
 import { mergeObjectByKey } from '../utils/utils';
 
 //these feel out of place
@@ -22,3 +22,8 @@ export const getLaunchCount = async () => {
     const launches = await getLaunches();
     return launches.length;
 };
+
+export const getSingleLaunch = async (flightNumber) => {
+    const singleLaunch = await getLaunchByFlightNumber(flightNumber);
+    return DataTransform([singleLaunch], launchMap).transform();
+}

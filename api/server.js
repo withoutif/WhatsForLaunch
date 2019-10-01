@@ -6,7 +6,6 @@ const app = express();
 const port = 3001;
 const host = '0.0.0.0';
 
-app.set('port',port);
 app.get('/', (req, res) => {
     res.json('invalid endpoint')
 });

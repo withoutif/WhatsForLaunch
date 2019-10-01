@@ -28,6 +28,13 @@ export const launchMap = {
             return DataTransform({payloads: arr}, nestedMap).transform();
         },
         on: "payloads"
+    },
+    {
+        run: function(val) {
+            return new Date(val).toDateString();
+        },
+        on: "launch_date_unix"
     }
+
     ]
 };
