@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//import AccordionDrawer from './AccordionDrawer';
+import AccordionDrawer from './AccordionDrawer';
 
 class AccordionList extends Component {
 
@@ -9,14 +9,22 @@ class AccordionList extends Component {
     }
 
     render() {
+        let accordionData = this.props.data.map(function(data, index) {
+            //TODO: there has to be a better way to split this data out
+            return <AccordionDrawer
+                key={index}
+                mission_patch_small={data["mission_patch_small"]}
+                mission_name = {data["mission_name"]}
+                launch_date_unix = {data["launch_date_unix"]}
+                flight_number = {data["flight_number"]}
+                details = {data["details"]}
+                rocket = {data["rocket"]}
+                payloads = {data["payloads"]}
+            />;
+        });
         return (
-            <div id="project-comments" className="commentList">
-{/*                <AccordionDrawer
-                mission_patch_small = {this.props.data["mission_patch_small"]}
-                mission_name = {this.props.data["mission_name"]}
-                launch_date_unix = {this.props.data["launch_date_unix"]}
-                flight_number = {this.props.data["flight_number"]}
-                />*/}
+            <div id="accordion-rows">
+                <ul>{accordionData}</ul>
             </div>
         );
     }

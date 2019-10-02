@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Collapsible from 'react-collapsible';
 import DataTable from './DataTable';
 
-class AccordionDrawer extends Component () {
+class AccordionDrawer extends Component {
 
     constructor(props) {
         super(props);
-
-        this.data = {
-         "mission_name": props.mission_name,
-         "launch_date_unix": props.mission_name,
-         "flight_number": props.flight_number
-         };
     }
 
 /*    favoritesButtonOnClick() {
@@ -31,27 +26,33 @@ class AccordionDrawer extends Component () {
         );
     }
 
-    onOpen(){
-        //rotate arrow
-    }
-
-
     render() {
         return (
             <div>
                 <Collapsible trigger={this.getHeader()}>
-                    <DataTable launch={this.data} />
+                   <DataTable
+                       rocket={this.props.rocket}
+                       payloads={this.props.payloads}
+                       details={this.props.details}
+                   />
                 </Collapsible>
             </div>
         );
     }
 }
 
-AccordionDrawer.PropTypes = {
+AccordionDrawer.propTypes = {
     mission_patch_small: PropTypes.string.isRequired,
     mission_name: PropTypes.string.isRequired,
     launch_date_unix: PropTypes.string.isRequired,
-    flight_number: PropTypes.number.isRequired
+    flight_number: PropTypes.number.isRequired,
+    details: PropTypes.string,
+    rocket: PropTypes.object.isRequired,
+    payloads: PropTypes.array.isRequired,
 };
+AccordionDrawer.defaultProps = {
+    details: "None available"
+};
+
 
 export default AccordionDrawer;

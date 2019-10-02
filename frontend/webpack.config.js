@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-var env = process.env.NODE_ENV || 'development';
 
 module.exports = [
     {
@@ -12,7 +11,7 @@ module.exports = [
             publicPath: '/'
         },
         target: 'node',
-        mode: env,
+        mode: 'development',
         module: {
             rules: [
                 {
@@ -26,7 +25,15 @@ module.exports = [
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx', '.css']
+            extensions: ['.js', '.jsx']
+        },
+        devServer: {
+            port: '3000',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+            },
+            mode: 'development'
         }
     },
     {
@@ -37,7 +44,7 @@ module.exports = [
             filename: 'bundle.js'
         },
         target: 'node',
-        mode: env,
+        mode: 'development',
         node: {
             fs: 'empty',
         },
@@ -55,7 +62,9 @@ module.exports = [
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx', '.css']
+            extensions: ['.js', '.jsx']
         }
     }
 ];
+
+

@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
+import toPairs from 'lodash/toPairs';
 import AccordionList from './AccordionList';
+//import { getMissions, getLaunchCount, getSpecificLaunch } from '../services/missionDataService'
+import axiosAPI from '../services/axiosAPI';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
-        const { missions } = props;
         this.state = {
-            data: missions,
+            data: [],
             offset: 0,
-            totalItems: 5
+            limit: 5,
+            pagecount: 0,
         };
     }
 
-    transformJsonToArray(){
+     async componentDidMount() {
+         let missionData = await axiosAPI.get(`/missions/${this.state.offset}/${this.state.limit}`);
+         let missions = missionData.data;
+         //Convert object to array for the purpose of pushing data around
+         //missions.forEach(function(value) {console.log(toPairs(value))});
 
-    }
-
-/*    async componentDidMount() {
-        const data = await this.props.offset;
-        const stringified = JSON.stringify(data);
-        this.setState({
-            data: stringified
-        });
-    }*/
+         //console.log(missions);
+         let countData = await axiosAPI.get('/count');
+         let missionCount = countData.data;
+         const pages = missionCount / this.state.limit;
+         this.setState({
+             data: missions,
+             pagecount: pages
+         });
+     }
 
     handlePageClick(pageNumber) {
        /* let selected = pageNumber.selected;
@@ -41,16 +48,20 @@ class App extends Component {
     };
 
     render() {
+        const {
+            data,
+            offset,
+            totalItems,
+        } = this.state;
         return (
             <div className="accordion-container">
-                <span>{this.state.data}</span>
                 <AccordionList data={this.state.data} />
                 <ReactPaginate
                     previousLabel={'<'}
                     nextLabel={'>'}
                     breakLabel={'~~~'}
                     breakClassName={'break-styles'}
-                    pageCount={this.state.totalItems}
+                    pageCount={this.state.pagecount}
                     marginPagesDisplayed={3}
                     pageRangeDisplayed={5}
                     onPageChange={this.handlePageClick()}
@@ -64,7 +75,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    missions: PropTypes.array.isRequired
+  config: PropTypes.object.isRequired
 };
 
 export default App;

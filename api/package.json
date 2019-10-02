@@ -9,6 +9,7 @@
   },
   "author": "TK Mogel",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-json-transform": "^1.0.19",
     "qs": "^6.9.0",

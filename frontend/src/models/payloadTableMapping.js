@@ -1,26 +1,26 @@
 export const payloadCols = [
     {
-        Header: "ID",
-        accessor: "payload_id"
+        name: "ID",
+        key: "payload_id"
     },
     {
-        Header: "Reused",
-        accessor: "reused"
+        name: "Reused",
+        key: "reused"
     },
     {
-        Header: "Nationality",
-        accessor: "nationality"
+        name: "Nationality",
+        key: "nationality"
     },
     {
-        Header: "Manufacturer",
-        accessor: "manufacturer"
+        name: "Manufacturer",
+        key: "manufacturer"
     },
     {
-        Header: "Type",
-        accessor: "type"
+        name: "Type",
+        key: "type"
     },
     {
-        Header: "Customers",
-        accessor: "customers"
+        name: "Customers",
+        key: "customers"
     }
 ]

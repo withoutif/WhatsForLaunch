@@ -1,26 +1,26 @@
 export const rocketCols = [
     {
-        Header: "ID",
-        accessor: "rocket_id"
+        name: "ID",
+        key: "rocket_id"
     },
     {
-        Header: "Name",
-        accessor: "rocket_name"
+        name: "Name",
+        key: "rocket_name"
     },
     {
-        Header: "Description",
-        accessor: "description"
+        name: "Description",
+        key: "description"
     },
     {
-        Header: "Country",
-        accessor: "country"
+        name: "Country",
+        key: "country"
     },
     {
-        Header: "Company",
-        accessor: "company"
+        name: "Company",
+        key: "company"
     },
     {
-        Header: "Cost Per Launch",
-        accessor:"cost_per_launch"
-    }
+        name: "Cost Per Launch",
+        key:"cost_per_launch"
+    },
 ];
