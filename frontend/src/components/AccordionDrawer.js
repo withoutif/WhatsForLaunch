@@ -6,7 +6,6 @@ import DataTable from './DataTable';
 import axiosAPI from '../services/axiosAPI';
 import { config } from '../../config';
 
-
 class AccordionDrawer extends Component {
 
     constructor(props) {
@@ -40,12 +39,12 @@ class AccordionDrawer extends Component {
 
     getHeader() {
         return (
-            <div>
+            <div className="drawer-header">
                 <img src={this.props.mission_patch_small}/>
                 <span>{this.props.mission_name}</span>
                 <span>{this.props.launch_date_unix}</span>
                 <span>{this.props.flight_number}</span>
-                <button onClick={this.favoriteItem}>
+                <button onClick={this.favoriteItem} className={this.favorite && 'selected-fave'}>
                     Favorite!
                 </button>
             </div>

@@ -21,11 +21,15 @@ module.exports = [
                 {
                     test: /\.(gif|png|jpe?g|svg)$/i,
                     loader: ['file-loader']
+                },
+                {
+                    test:/\.css$/,
+                    use:['style-loader','css-loader']
                 }
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx', '.css']
         },
         devServer: {
             port: '3000',
@@ -58,11 +62,15 @@ module.exports = [
                 {
                     test: /\.(gif|png|jpe?g|svg)$/i,
                     loader: ['file-loader']
+                },
+                {
+                    test:/\.css$/,
+                    use:['style-loader','css-loader']
                 }
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx', '.css']
         }
     }
 ];
