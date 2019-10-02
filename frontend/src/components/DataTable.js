@@ -33,7 +33,7 @@ class DataTable extends Component {
 }
 DataTable.propTypes = {
     rocket: PropTypes.object.isRequired,
-    payloads: PropTypes.array.isRequired
+    payloads: PropTypes.array.isRequired,
 };
 
 export default DataTable;

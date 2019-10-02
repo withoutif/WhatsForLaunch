@@ -7,6 +7,7 @@ module.exports = {
                 singleLaunch: "http://localhost:3001/missions/singleLaunch"
             }
         },
-        baseUri: "http://localhost:3001/"
+        baseUri: "http://localhost:3001/",
+        defaultUserId: 80085
     }
 }

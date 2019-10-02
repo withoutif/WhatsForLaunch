@@ -26,4 +26,4 @@ export const getLaunchCount = async () => {
 export const getSingleLaunch = async (flightNumber) => {
     const singleLaunch = await getLaunchByFlightNumber(flightNumber);
     return DataTransform([singleLaunch], launchMap).transform();
-}
+};

@@ -6,10 +6,16 @@ class AccordionList extends Component {
 
     constructor(props) {
         super(props);
+
     }
 
     render() {
+        const faves = this.props.favorites;
         let accordionData = this.props.data.map(function(data, index) {
+            let isFavorite = false;
+            if (faves.includes(data["flight_number"])){
+                isFavorite = true;
+            }
             //TODO: there has to be a better way to split this data out
             return <AccordionDrawer
                 key={index}
@@ -20,6 +26,7 @@ class AccordionList extends Component {
                 details = {data["details"]}
                 rocket = {data["rocket"]}
                 payloads = {data["payloads"]}
+                favorite = {isFavorite}
             />;
         });
         return (
@@ -32,6 +39,11 @@ class AccordionList extends Component {
 
  AccordionList.propTypes = {
     data: PropTypes.array.isRequired,
+    favorites: PropTypes.array
 };
+
+ AccordionList.defaultProps = {
+     favorites: []
+ };
 
 export default AccordionList;
