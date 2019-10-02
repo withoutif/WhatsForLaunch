@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
     {
@@ -19,17 +20,13 @@ module.exports = [
                     loader: ['babel-loader']
                 },
                 {
-                    test: /\.(gif|png|jpe?g|svg)$/i,
-                    loader: ['file-loader']
-                },
-                {
-                    test:/\.css$/,
-                    use:['style-loader','css-loader']
+                    test: /\.css$/,
+                    use: ['css-loader']
                 }
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx', '.css']
+            extensions: ['.js', '.jsx']
         },
         devServer: {
             port: '3000',
@@ -41,6 +38,11 @@ module.exports = [
         }
     },
     {
+        plugins: [
+                extractPlugin = new MiniCssExtractPlugin({
+                filename: 'index.css',
+            }),
+        ],
         entry: './src/components/browser.js',
         output: {
             path: path.join(__dirname, 'dist/assets'),
@@ -64,15 +66,10 @@ module.exports = [
                     loader: ['file-loader']
                 },
                 {
-                    test:/\.css$/,
-                    use:['style-loader','css-loader']
+                    test: /\.css$/,
+                    use: [MiniCssExtractPlugin.loader, 'css-loader']
                 }
             ]
-        },
-        resolve: {
-            extensions: ['.js', '.jsx', '.css']
         }
     }
 ];
-
-

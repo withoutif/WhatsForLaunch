@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Display SpaceX Launch data",
   "main": "App.js",
+  "scripts": {
+    "start": "cd dist && node ../dist/server.js",
+    "build": "webpack",
+    "dev:start": "npm run build && npm run start",
+    "client": "node ../dist/assets/bundle.js"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "express": "^4.17.1",
@@ -30,22 +36,11 @@
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "image-webpack-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "postcss-loader": "^3.0.0",
     "style-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
-  },
-  "scripts": {
-    "start": "cd dist && node ../dist/server.js",
-    "build": "webpack",
-    "dev:start": "npm run build && npm run start",
-    "client": "node ../dist/assets/bundle.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/withoutif/WhatsForLaunch.git"
-  },
-  "bugs": {
-    "url": "https://github.com/withoutif/WhatsForLaunch/issues"
-  },
-  "homepage": "https://github.com/withoutif/WhatsForLaunch#readme"
+  }
 }

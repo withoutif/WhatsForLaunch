@@ -22,5 +22,10 @@ server.get('/:offset?/:limit?', async (req, res) => {
         }));
 });
 
-server.listen(port, host);
+const openPort = server.listen(port, host);
 
+//In case of emergency, stop process (I tried so hard and couldn't come up with a break glass pun
+process.on('SIGTERM', () => { openPort.close(() => {
+    console.log('closed server');
+    process.exit(0);
+})});

@@ -6,11 +6,16 @@ import DataTable from './DataTable';
 import axiosAPI from '../services/axiosAPI';
 import { config } from '../../config';
 
+import '../../public/styles/accordionDrawerStyles.css';
+
 class AccordionDrawer extends Component {
 
     constructor(props) {
         super(props);
-        this.favorite = this.props.favorite;
+        this.state = {
+            favorite: this.props.favorite
+        };
+
         this.favoriteItem = this.favoriteItem.bind(this);
     }
 
@@ -25,28 +30,37 @@ class AccordionDrawer extends Component {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
-        }
+        };
 
-        if (this.favorite ) {
+        if (this.state.favorite ) {
             await axiosAPI.post('/favorite/remove', axiosData, options);
             alert("Removed from favorites");
         } else {
             await axiosAPI.post('/favorite/add', axiosData, options);
             alert("Added to favorites");
         }
-        this.favorite = !this.favorite;
+        this.setState({
+            favorite: !this.state.favorite
+        });
     }
 
     getHeader() {
+        const image = this.props.mission_patch_small ?
+            (<img src={this.props.mission_patch_small} className="default-image"/>):
+            (<img src='../../public/images/no_patch.png' />);
         return (
             <div className="drawer-header">
-                <img src={this.props.mission_patch_small}/>
-                <span>{this.props.mission_name}</span>
-                <span>{this.props.launch_date_unix}</span>
-                <span>{this.props.flight_number}</span>
-                <button onClick={this.favoriteItem} className={this.favorite && 'selected-fave'}>
-                    Favorite!
-                </button>
+                <div className="table-row">
+                    {image}
+                    <span className="header-text" >{this.props.mission_name}</span>
+                    <span className="header-text" >{this.props.launch_date_unix}</span>
+                    <span className="header-text" >{`Flight# ${this.props.flight_number}`}</span>
+                    <div className="button-styles">
+                        <button onClick={this.favoriteItem}>
+                            button!
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     }

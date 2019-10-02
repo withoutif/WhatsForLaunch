@@ -31,7 +31,7 @@ export const launchMap = {
     },
     {
         run: function(val) {
-            return new Date(val * 1000);
+            return new Date(val * 1000).toDateString();
         },
         on: "launch_date_unix"
     }

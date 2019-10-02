@@ -2,9 +2,9 @@ var webpack = require('webpack');
 var env = process.env.NODE_ENV || 'development';
 
  module.exports = {
-     entry: './server.js',
+     entry: './app.js',
      output: {
-         filename: './server.bundle.js'
+         filename: './app.bundle.js'
      },
      target: 'node',
      resolve: {

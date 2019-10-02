@@ -1,0 +1,62 @@
+#root {
+    display: flex;
+    justify-content: space-evenly;
+}
+.drawer-header {
+    width: 720px;
+    border-bottom: 1px solid darkslategray;
+    display: inline-table;
+    font-family: monospace;
+    font-size: 12pt;
+    height: 100px;
+    background: linear-gradient(to left, #ffffff, rgba(0,0,0,0.2));
+}
+
+.Collapsable {
+    background: linear-gradient(to left, #ffffff, rgba(0,0,0,0.1));
+}
+
+.Collapsible__contentInner {
+    margin: 20px;
+    padding: 20px;
+    -webkit-mask-composite: plus-lighter;
+    background: #ffffff4d;
+    background-clip: border-box;
+    overflow-y: scroll;
+    max-height: 180px;
+    height: 40vh;
+}
+.Collapsible__contentOuter {
+    width: 719px;
+    outline: 1px solid darkslategray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+}
+ul.pagination {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    width: 720px;
+    list-style-type: none;
+}
+
+.table-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 720px;
+    padding-bottom: 4px;
+    height: 100%;
+}
+.default-image{
+     height:100px;
+ }
+
+.header-text {
+    flex: 1 1 0;
+}
+.button-style {
+    flex: 1 1 0;
+}
