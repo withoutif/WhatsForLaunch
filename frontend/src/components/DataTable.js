@@ -16,7 +16,7 @@ class DataTable extends Component {
     return(
         <div>
             <h1>Mission Description</h1>
-            <div>{this.props.details}</div>
+            <div>{this.props.details || "No description available"}</div>
             <h1>Rocket</h1>
             <ObjectTable
                 objects = {[mappedRocket]}

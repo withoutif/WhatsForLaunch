@@ -5,6 +5,7 @@ import qs from 'qs';
 import DataTable from './DataTable';
 import axiosAPI from '../services/axiosAPI';
 import { config } from '../../config';
+import { Star } from '../../public/images/Five-pointed_star.svg';
 
 import '../../public/styles/accordionDrawerStyles.css';
 
@@ -47,7 +48,7 @@ class AccordionDrawer extends Component {
     getHeader() {
         const image = this.props.mission_patch_small ?
             (<img src={this.props.mission_patch_small} className="default-image"/>):
-            (<img src='../../public/images/no_patch.png' />);
+            (<span className="no-image">This mission has no patch</span>);
         return (
             <div className="drawer-header">
                 <div className="table-row">
@@ -57,7 +58,7 @@ class AccordionDrawer extends Component {
                     <span className="header-text" >{`Flight# ${this.props.flight_number}`}</span>
                     <div className="button-styles">
                         <button onClick={this.favoriteItem}>
-                            button!
+                            <svg src={Star} />
                         </button>
                     </div>
                 </div>

@@ -51,8 +51,21 @@ ul.pagination {
     height: 100%;
 }
 .default-image{
-     height:100px;
+    height:100px;
+    padding-right: 20px;
  }
+
+.no-image {
+    display: table-cell;
+    vertical-align: middle;
+    background: black;
+    color: white;
+    font-family: none;
+    font-size: 15pt;
+    width: 115px;
+    margin-right: 20px;
+    text-align: center;
+}
 
 .header-text {
     flex: 1 1 0;
