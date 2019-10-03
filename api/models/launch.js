@@ -10,7 +10,8 @@ const nestedMap = {
         type: "payload_type",
         customers: "customers"
     }
-}
+};
+
 export const launchMap = {
     item: {
         flight_number: "flight_number",
@@ -27,6 +28,13 @@ export const launchMap = {
             return DataTransform({payloads: arr}, nestedMap).transform();
         },
         on: "payloads"
+    },
+    {
+        run: function(val) {
+            return new Date(val * 1000).toDateString();
+        },
+        on: "launch_date_unix"
     }
+
     ]
 };

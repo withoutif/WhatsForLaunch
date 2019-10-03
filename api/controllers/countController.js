@@ -1,12 +1,13 @@
 import { getLaunchCount } from '../service/missionService';
 
 export const countController = async (req, res) => {
-    let count = '';
     try {
-        count = await getLaunchCount();
+        const count = await getLaunchCount();
+        res.json(count);
     } catch(e) {
-        console.log(e);  
+        console.log(e);
+        throw new Error(e);
     }
-    res.send(count);
+
 };
 export default countController;

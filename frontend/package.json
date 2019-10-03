@@ -1,0 +1,48 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Display SpaceX Launch data",
+  "main": "App.js",
+  "scripts": {
+    "start": "npm run build && cd dist && node ../dist/server.js",
+    "build": "webpack",
+    "client": "node ../dist/assets/bundle.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.15",
+    "lodash.transform": "^4.6.0",
+    "path": "^0.12.7",
+    "prop-types": "^15.7.2",
+    "qs": "^6.9.0",
+    "react": "^16.10.1",
+    "react-collapsible": "^2.6.0",
+    "react-dom": "^16.10.1",
+    "react-object-table": "^0.5.1",
+    "react-paginate": "^6.3.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.6.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "postcss-loader": "^3.0.0",
+    "raw-loader": "^3.1.0",
+    "react-svg-loader": "^3.0.3",
+    "style-loader": "^1.0.0",
+    "svg-url-loader": "^3.0.2",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}

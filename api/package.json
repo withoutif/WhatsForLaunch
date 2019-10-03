@@ -2,15 +2,18 @@
   "name": "mission-data",
   "version": "1.0.0",
   "description": "RESTful API to return formatted SpaceX data",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "webpack": "webpack",
-    "test": "test"
+    "build": "webpack",
+    "start": "npm run build && node ./dist/app.bundle.js"
   },
   "author": "TK Mogel",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
+    "nedb": "^1.8.0",
+    "nedb-async-await": "^0.1.2",
     "node-json-transform": "^1.0.19",
     "qs": "^6.9.0",
     "react": "^16.9.0",

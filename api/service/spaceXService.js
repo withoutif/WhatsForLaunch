@@ -9,11 +9,18 @@ export const getRockets = async () => {
 };
 
 //offset and limit are for pagination.
+//TODO: at some point order should become configurable
 export const getLaunches = async (offset = '', limit = '') => {
    const params = qs.stringify({
+       order: 'desc',
        offset,
        limit,
     });
     const uri = `${config.spaceXdata.uris.launch}?${params}`;
+    return getRequest(uri);
+};
+
+export const getLaunchByFlightNumber = async (flightNumber) => {
+    const uri = `${config.spaceXdata.uris.launch}/${flightNumber}`;
     return getRequest(uri);
 };
