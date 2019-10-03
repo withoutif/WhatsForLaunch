@@ -5,7 +5,8 @@ import qs from 'qs';
 import DataTable from './DataTable';
 import axiosAPI from '../services/axiosAPI';
 import { config } from '../../config';
-import { Star } from '../../public/images/Five-pointed_star.svg';
+import Star from './StarIcon';
+//import Star from 'raw-loader!../../public/images/star.svg';
 
 import '../../public/styles/accordionDrawerStyles.css';
 
@@ -14,13 +15,13 @@ class AccordionDrawer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            favorite: this.props.favorite
+            favorite: this.props.favorite,
+            fill: this.props.favorite ? '#FFCE0F' : '#fff'
         };
 
         this.favoriteItem = this.favoriteItem.bind(this);
     }
 
-    //this should probably be kept in state somewhere
     async favoriteItem() {
         const data = {
             userId: config.defaultUserId,
@@ -35,12 +36,11 @@ class AccordionDrawer extends Component {
 
         if (this.state.favorite ) {
             await axiosAPI.post('/favorite/remove', axiosData, options);
-            alert("Removed from favorites");
         } else {
             await axiosAPI.post('/favorite/add', axiosData, options);
-            alert("Added to favorites");
         }
         this.setState({
+            fill: !this.state.favorite ? '#FFCE0F' : '#fff',
             favorite: !this.state.favorite
         });
     }
@@ -56,9 +56,9 @@ class AccordionDrawer extends Component {
                     <span className="header-text" >{this.props.mission_name}</span>
                     <span className="header-text" >{this.props.launch_date_unix}</span>
                     <span className="header-text" >{`Flight# ${this.props.flight_number}`}</span>
-                    <div className="button-styles">
-                        <button onClick={this.favoriteItem}>
-                            <svg src={Star} />
+                    <div className="button-container">
+                        <button onClick={this.favoriteItem} className="button-style">
+                            <Star width="50px" height="50px" viewBox="0 -40 80 100"  fill={this.state.fill}/>
                         </button>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ class AccordionDrawer extends Component {
 }
 
 AccordionDrawer.propTypes = {
-    mission_patch_small: PropTypes.string.isRequired,
+    mission_patch_small: PropTypes.string,
     mission_name: PropTypes.string.isRequired,
     launch_date_unix: PropTypes.string.isRequired,
     flight_number: PropTypes.number.isRequired,
@@ -95,7 +95,8 @@ AccordionDrawer.propTypes = {
 AccordionDrawer.defaultProps = {
     details: "None available",
     favorites: [],
-    favorite: false
+    favorite: false,
+    mission_patch_small: undefined
 };
 
 

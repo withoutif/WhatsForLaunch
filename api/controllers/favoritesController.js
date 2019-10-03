@@ -1,6 +1,6 @@
 import { insertFavorite, getFavoriteByUserId, removeFavoriteByUserId } from '../db/favoritesDbUtil';
 
-export const addFavorite = (req, res) => {
+export const addFavorite = async (req, res) => {
     if(!req.body.flightnumber) {
         console.log(req.body);
         return res.status(400).send({
@@ -18,15 +18,23 @@ export const addFavorite = (req, res) => {
         userId: req.body.userId,
         flightNumber: req.body.flightnumber
     };
-    insertFavorite(favorite);
-    res.send({
-        success: 'true',
-        message: 'favorite added',
-        favorite
-    });
+    const result = await insertFavorite(favorite);
+    if (result) {
+        res.send({
+            success: 'true',
+            message: 'favorite added',
+            favorite
+        });
+    }
+    else {
+        res.send({
+            success: 'false',
+            message: 'favorite could not be added'
+        });
+    }
 };
 
-export const removeFavorites = (req, res) => {
+export const removeFavorites = async (req, res) => {
     if(!req.body.flightnumber) {
         console.log(req.body);
         return res.status(400).send({
@@ -40,11 +48,18 @@ export const removeFavorites = (req, res) => {
             message: 'user is required'
         });
     };
-    removeFavoriteByUserId(req.body.userId, req.body.flightnumber);
-    res.send({
-        success: 'true',
-        message: 'favorite removed',
-    });
+    const result = await removeFavoriteByUserId(req.body.userId, req.body.flightnumber);
+    if(result) {
+        res.send({
+            success: 'true',
+            message: 'favorite removed',
+        });
+    } else {
+        res.send({
+            success: 'false',
+            message: 'favorite could not be removed'
+        });
+    }
 }
 
 export const getFavorites = async (req, res) => {

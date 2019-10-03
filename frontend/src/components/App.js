@@ -31,6 +31,8 @@ class App extends Component {
         let favorites = favoriteData.data;
         const userFaves = flatten(favorites);
 
+        console.log('faves ' + userFaves[2]);
+
         let countData = await axiosAPI.get('/count');
         let missionCount = countData.data;
 

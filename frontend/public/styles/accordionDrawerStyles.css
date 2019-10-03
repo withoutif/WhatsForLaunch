@@ -66,10 +66,15 @@ ul.pagination {
     margin-right: 20px;
     text-align: center;
 }
-
 .header-text {
     flex: 1 1 0;
 }
-.button-style {
+.button-container {
     flex: 1 1 0;
+}
+.button-style {
+    background-color: unset;
+    height: 45px;
+    width: 45px;
+    border: none;
 }

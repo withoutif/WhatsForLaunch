@@ -4,9 +4,8 @@
   "description": "Display SpaceX Launch data",
   "main": "App.js",
   "scripts": {
-    "start": "cd dist && node ../dist/server.js",
+    "start": "npm run build && cd dist && node ../dist/server.js",
     "build": "webpack",
-    "dev:start": "npm run build && npm run start",
     "client": "node ../dist/assets/bundle.js"
   },
   "dependencies": {
@@ -38,7 +37,10 @@
     "image-webpack-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "postcss-loader": "^3.0.0",
+    "raw-loader": "^3.1.0",
+    "react-svg-loader": "^3.0.3",
     "style-loader": "^1.0.0",
+    "svg-url-loader": "^3.0.2",
     "url-loader": "^2.1.0",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"

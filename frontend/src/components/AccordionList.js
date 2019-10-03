@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import includes from 'lodash/includes';
 import AccordionDrawer from './AccordionDrawer';
 
 class AccordionList extends Component {
@@ -13,7 +14,13 @@ class AccordionList extends Component {
         const faves = this.props.favorites;
         let accordionData = this.props.data.map(function(data, index) {
             let isFavorite = false;
-            if (faves.includes(data["flight_number"])){
+            let flightNumber = data["flight_number"];
+            console.log(flightNumber.toString());
+            console.log(faves);
+
+            if (includes(faves, flightNumber.toString())){
+                console.log('is fave');
+                console.log(data["flight_number"]);
                 isFavorite = true;
             }
             //TODO: there has to be a better way to split this data out
