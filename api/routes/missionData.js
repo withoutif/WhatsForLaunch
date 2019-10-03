@@ -1,8 +1,8 @@
 import express from 'express';
 import { payloadController } from '../controllers/payloadController';
 
-const router = express.Router();
+const missionData = express.Router();
 
-router.get('/:offset?/:limit?', payloadController);
+missionData.get('/:offset?/:limit?', payloadController);
 
-export default router;
+export default missionData;
