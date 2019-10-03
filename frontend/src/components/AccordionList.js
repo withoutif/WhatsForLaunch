@@ -25,7 +25,7 @@ class AccordionList extends Component {
             }
             //TODO: there has to be a better way to split this data out
             return <AccordionDrawer
-                key={index}
+                key={data["flight_number"]}
                 mission_patch_small={data["mission_patch_small"]}
                 mission_name = {data["mission_name"]}
                 launch_date_unix = {data["launch_date_unix"]}
