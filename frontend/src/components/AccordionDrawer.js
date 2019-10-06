@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsible from 'react-collapsible';
 import qs from 'qs';
+import includes from 'lodash/includes';
+import flatten from 'lodash/flatten';
 import DataTable from './DataTable';
 import axiosAPI from '../services/axiosAPI';
 import { config } from '../../config';
 import Star from './StarIcon';
-//import Star from 'raw-loader!../../public/images/star.svg';
 
 import '../../public/styles/accordionDrawerStyles.css';
 
@@ -15,14 +16,32 @@ class AccordionDrawer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            favorite: this.props.favorite,
-            fill: this.props.favorite ? '#FFCE0F' : '#fff'
+            favorites: [],
+            isFavorite: false,
+            fill: '#fff'
         };
 
         this.favoriteItem = this.favoriteItem.bind(this);
     }
 
+
+    async componentDidMount() {
+
+        let favoriteData = await axiosAPI.get(`/favorite/view/${config.defaultUserId}`);
+        let favorites = favoriteData.data;
+        const userFaves = flatten(favorites);
+
+        const isFavorite = includes(userFaves, this.props.flight_number.toString());
+
+        this.setState({
+            favorites: userFaves,
+            isFavorite: isFavorite,
+            fill: isFavorite ? '#FFCE0F' : '#fff'
+        });
+    }
+
     async favoriteItem() {
+
         const data = {
             userId: config.defaultUserId,
             flightnumber: this.props.flight_number
@@ -34,14 +53,14 @@ class AccordionDrawer extends Component {
             }
         };
 
-        if (this.state.favorite ) {
+        if (this.state.isFavorite ) {
             await axiosAPI.post('/favorite/remove', axiosData, options);
         } else {
             await axiosAPI.post('/favorite/add', axiosData, options);
         }
         this.setState({
-            fill: !this.state.favorite ? '#FFCE0F' : '#fff',
-            favorite: !this.state.favorite
+            fill: !this.state.isFavorite ? '#FFCE0F' : '#fff',
+            isFavorite: !this.state.isFavorite
         });
     }
 
@@ -90,12 +109,9 @@ AccordionDrawer.propTypes = {
     details: PropTypes.string,
     rocket: PropTypes.object.isRequired,
     payloads: PropTypes.array.isRequired,
-    favorite: PropTypes.bool
 };
 AccordionDrawer.defaultProps = {
     details: "None available",
-    favorites: [],
-    favorite: false,
     mission_patch_small: undefined
 };
 

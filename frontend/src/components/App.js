@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import flatten from 'lodash/flatten';
 import AccordionList from './AccordionList';
 import axiosAPI from '../services/axiosAPI';
-import { config } from '../../config';
 
 class App extends Component {
     constructor(props) {
@@ -17,7 +15,6 @@ class App extends Component {
             offset: offset || 0,
             limit: limit || 5,
             pagecount: 0,
-            userFaves: []
         };
 
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -27,12 +24,6 @@ class App extends Component {
         let missionData = await axiosAPI.get(`/missions/${this.state.offset}/${this.state.limit}`);
         let missions = missionData.data;
 
-        let favoriteData = await axiosAPI.get(`/favorite/view/${config.defaultUserId}`);
-        let favorites = favoriteData.data;
-        const userFaves = flatten(favorites);
-
-        console.log('faves ' + userFaves[2]);
-
         let countData = await axiosAPI.get('/count');
         let missionCount = countData.data;
 
@@ -40,7 +31,6 @@ class App extends Component {
         this.setState({
             data: missions,
             pagecount: pages,
-            userFaves: userFaves,
         });
     }
 
@@ -58,17 +48,9 @@ class App extends Component {
     };
 
     render() {
-        /*        const {
-         data,
-         offset,
-         limit,
-         pagecount,
-         userFaves
-         } = this.state;*/
-
         return (
             <div className="accordion-container">
-                <AccordionList data={this.state.data} favorites={this.state.userFaves} />
+                <AccordionList data={this.state.data} />
                 <ReactPaginate
                     previousLabel={'<'}
                     nextLabel={'>'}
