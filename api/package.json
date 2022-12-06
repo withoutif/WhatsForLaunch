@@ -15,7 +15,7 @@
     "nedb": "^1.8.0",
     "nedb-async-await": "^0.1.2",
     "node-json-transform": "^1.0.19",
-    "qs": "^6.9.0",
+    "qs": "^6.9.7",
     "react": "^16.9.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
